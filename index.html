@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>Project ReThreaded</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="favicon.png" />
@@ -106,7 +106,6 @@
   </footer>
 
   <script>
-    // This script handles the automatic sliding logic
     let currentSlide = 0;
     const totalSlides = 4;
     const slider = document.querySelector('.slider');
@@ -122,7 +121,6 @@
 
     let slideInterval = setInterval(autoPlay, 5000);
 
-    // Stop auto-play if the user clicks a navigation dot
     document.querySelector('.slider-nav').addEventListener('click', () => {
       clearInterval(slideInterval);
     });
