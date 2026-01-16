@@ -7,11 +7,38 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/png" href="favicon.png" />
 </head>
+
 <body>
-  <header class="hero">
-    <h1>Project ReThreaded</h1>
-    <p>Confidence Through Clothing for Foster Youth</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdk6RMAVHhKlDTmWz0yycPTGcXmKhEYwoxYRmp5nv6UQ7TwcQ/viewform" target="_blank" class="cta-button">Donate Today</a>
+  <header class="hero-container">
+    <section class="slider-wrapper">
+      <div class="slider">
+        <div class="slide-item" id="slide1">
+            <img src="image1.png" alt="Project ReThreaded 1" />
+        </div>
+        <div class="slide-item" id="slide2">
+            <img src="image2.png" alt="Project ReThreaded 2" />
+        </div>
+        <div class="slide-item" id="slide3">
+            <img src="image3.png" alt="Project ReThreaded 3" />
+        </div>
+        <div class="slide-item" id="slide4">
+            <img src="image4.png" alt="Project ReThreaded 4" />
+        </div>
+      </div>
+
+      <div class="hero-overlay">
+        <h1>Project ReThreaded</h1>
+        <p>Confidence Through Clothing for Foster Youth</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdk6RMAVHhKlDTmWz0yycPTGcXmKhEYwoxYRmp5nv6UQ7TwcQ/viewform" target="_blank" class="cta-button">Donate Today</a>
+      </div>
+
+      <div class="slider-nav">
+        <a href="#slide1"></a>
+        <a href="#slide2"></a>
+        <a href="#slide3"></a>
+        <a href="#slide4"></a>
+      </div>
+    </section>
   </header>
 
   <section class="mission">
@@ -81,5 +108,30 @@
   <footer>
     <p>&copy; 2025 Project ReThreaded | Founded by Ava Dwyer, El Camino Fundamental High School</p>
   </footer>
+
+<script>
+  let currentSlide = 0;
+  const totalSlides = 4;
+  const slider = document.querySelector('.slider');
+
+  function autoPlay() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    // Calculate the width of one slide
+    const slideWidth = slider.clientWidth;
+    // Scroll the slider to the next position
+    slider.scrollTo({
+      left: slideWidth * currentSlide,
+      behavior: 'smooth'
+    });
+  }
+
+  // Change image every 5 seconds
+  let slideInterval = setInterval(autoPlay, 5000);
+
+  // Stop auto-play if the user clicks a navigation dot manually
+  document.querySelector('.slider-nav').addEventListener('click', () => {
+    clearInterval(slideInterval);
+  });
+</script>
 </body>
 </html>

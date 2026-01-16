@@ -4,65 +4,109 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f4f9ff;
   color: #333;
+  overflow-x: hidden; /* Prevents side scrolling of the whole page */
 }
 
-header.hero {
-  background: linear-gradient(to right, #6db3f2, #1e69de);
-  color: white;
+.hero-container {
+  width: 100%;
+  position: relative;
+}
+
+.slider-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 85vh; /* Covers most of the screen */
+  overflow: hidden;
+}
+
+.slider {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+}
+
+/* Hides scrollbar in Chrome/Safari */
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+.slide-item {
+  flex: 0 0 100%; /* Force each slide to take up 100% of the width */
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+  position: relative;
+}
+
+.slide-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(55%); /* Darkens images to make text pop */
+}
+
+/* TEXT OVERLAY */
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  padding: 60px 20px;
+  color: white;
+  z-index: 10;
+  width: 90%;
+  pointer-events: none; /* Makes sure you can click the dots through the overlay area */
 }
 
-header.hero h1 {
-  font-size: 3em;
-  margin-bottom: 10px;
+.hero-overlay h1 {
+  font-size: clamp(2.5em, 8vw, 4.5em); /* Scales size based on screen width */
+  margin: 0;
+  text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
 }
 
-header.hero p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
+.hero-overlay p {
+  font-size: clamp(1em, 3vw, 1.5em);
+  margin: 15px 0 30px 0;
+  text-shadow: 1px 1px 10px rgba(0,0,0,0.6);
 }
 
 .cta-button {
   background-color: #ffffff;
   color: #1e69de;
-  padding: 12px 24px;
-  border-radius: 30px;
+  padding: 15px 35px;
+  border-radius: 40px;
   text-decoration: none;
   font-weight: bold;
-  transition: background 0.3s ease;
+  font-size: 1.1em;
+  transition: 0.3s;
+  pointer-events: auto; /* Re-enables clicking on the button specifically */
+  display: inline-block;
 }
 
 .cta-button:hover {
   background-color: #e0eaff;
+  transform: translateY(-3px);
 }
 
+/* SECTIONS */
 section {
-  padding: 40px 20px;
-  max-width: 800px;
+  padding: 60px 20px;
+  max-width: 900px;
   margin: auto;
 }
 
 h2 {
   color: #1e69de;
-  font-size: 2em;
-  margin-bottom: 10px;
-}
-
-ul {
-  list-style: none;
-  padding-left: 0;
+  font-size: 2.2em;
 }
 
 ul li {
-  margin: 8px 0;
+  margin: 10px 0;
   font-size: 1.1em;
-}
-
-.note {
-  font-style: italic;
-  color: #555;
-  margin-top: 10px;
 }
 
 .help-grid {
@@ -73,20 +117,41 @@ ul li {
 
 .help-grid > div {
   flex: 1;
-  min-width: 220px;
+  min-width: 250px;
   background-color: #e0eaff;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.contact a {
-  color: #1e69de;
-  text-decoration: none;
+  padding: 25px;
+  border-radius: 12px;
 }
 
 footer {
   background-color: #1e69de;
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 30px;
+}
+
+/* DOTS */
+.slider-nav {
+  display: flex;
+  column-gap: 1rem;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+}
+
+.slider-nav a {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: white;
+  opacity: 0.5;
+  transition: 0.3s;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+.slider-nav a:hover {
+  opacity: 1;
+  transform: scale(1.2);
 }
