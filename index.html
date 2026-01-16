@@ -43,16 +43,12 @@
 
   <section class="mission">
     <h2>Our Mission</h2>
-    <p>
-      We're collecting gently used clothing to support foster youth in Sacramento — helping them feel confident, empowered, and seen.
-    </p>
+    <p>We're collecting gently used clothing to support foster youth in Sacramento — helping them feel confident, empowered, and seen.</p>
   </section>
 
   <section class="importance">
     <h2>Why It Matters</h2>
-    <p>
-      Foster youth often move homes with just a bag of clothes — or none at all. You can give them a fresh start, a little comfort, and a way to express themselves.
-    </p>
+    <p>Foster youth often move homes with just a bag of clothes — or none at all. You can give them a fresh start, a little comfort, and a way to express themselves.</p>
   </section>
 
   <section class="collection">
@@ -109,29 +105,27 @@
     <p>&copy; 2025 Project ReThreaded | Founded by Ava Dwyer, El Camino Fundamental High School</p>
   </footer>
 
-<script>
-  let currentSlide = 0;
-  const totalSlides = 4;
-  const slider = document.querySelector('.slider');
+  <script>
+    // This script handles the automatic sliding logic
+    let currentSlide = 0;
+    const totalSlides = 4;
+    const slider = document.querySelector('.slider');
 
-  function autoPlay() {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    // Calculate the width of one slide
-    const slideWidth = slider.clientWidth;
-    // Scroll the slider to the next position
-    slider.scrollTo({
-      left: slideWidth * currentSlide,
-      behavior: 'smooth'
+    function autoPlay() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      const slideWidth = slider.clientWidth;
+      slider.scrollTo({
+        left: slideWidth * currentSlide,
+        behavior: 'smooth'
+      });
+    }
+
+    let slideInterval = setInterval(autoPlay, 5000);
+
+    // Stop auto-play if the user clicks a navigation dot
+    document.querySelector('.slider-nav').addEventListener('click', () => {
+      clearInterval(slideInterval);
     });
-  }
-
-  // Change image every 5 seconds
-  let slideInterval = setInterval(autoPlay, 5000);
-
-  // Stop auto-play if the user clicks a navigation dot manually
-  document.querySelector('.slider-nav').addEventListener('click', () => {
-    clearInterval(slideInterval);
-  });
-</script>
+  </script>
 </body>
 </html>
