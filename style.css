@@ -1,34 +1,29 @@
-/* RESET & ANTI-SHRINK BOX MODEL */
+/* GLOBAL RESET */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body {
+  font-family: 'Segoe UI', sans-serif;
   background-color: #f4f9ff;
   color: #333;
-  overflow-x: hidden; /* Prevents tiny horizontal shifts */
-  -webkit-text-size-adjust: 100%; /* Prevents font shrinking on mobile */
+  width: 100%;
+  overflow-x: hidden;
 }
 
-/* HERO SLIDER SECTION */
+/* THE FULL-SCREEN HERO */
 .hero-container {
   width: 100%;
-  position: relative;
 }
 
 .slider-wrapper {
   position: relative;
   width: 100%;
-  height: 90vh; /* Takes up 90% of the viewport height for a 'huge' feel */
-  min-height: 500px;
+  height: 95vh; /* Very large header, nearly full screen */
   overflow: hidden;
-  background-color: #000;
+  background-color: transparent; /* Removes any potential black background */
 }
 
 .slider {
@@ -55,11 +50,12 @@ html, body {
 .slide-item img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  filter: brightness(45%); /* Darkened slightly more for better text contrast */
+  /* This is the magic line that removes borders and fills the space */
+  object-fit: cover; 
+  filter: brightness(50%);
 }
 
-/* OVERLAY TEXT */
+/* OVERLAY CONTENT */
 .hero-overlay {
   position: absolute;
   top: 50%;
@@ -69,36 +65,33 @@ html, body {
   color: white;
   z-index: 10;
   width: 90%;
-  max-width: 1000px;
   pointer-events: none;
 }
 
 .hero-overlay h1 {
-  /* clamp(min, preferred, max) - This makes the header stay big */
-  font-size: clamp(2.5rem, 10vw, 5rem);
-  margin-bottom: 10px;
+  font-size: clamp(2.5rem, 12vw, 5.5rem);
   font-weight: 800;
-  text-shadow: 2px 2px 20px rgba(0,0,0,0.8);
+  text-shadow: 2px 2px 20px rgba(0,0,0,0.7);
 }
 
 .hero-overlay p {
-  font-size: clamp(1.1rem, 4vw, 1.8rem);
-  margin-bottom: 40px;
-  text-shadow: 1px 1px 10px rgba(0,0,0,0.8);
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  margin: 10px 0 30px 0;
+  text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
 }
 
 .cta-button {
   background-color: #ffffff;
   color: #1e69de;
-  padding: 18px 45px;
+  padding: 20px 45px;
   border-radius: 50px;
   text-decoration: none;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   transition: 0.3s ease;
   pointer-events: auto;
   display: inline-block;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
 .cta-button:hover {
@@ -106,29 +99,23 @@ html, body {
   transform: scale(1.05);
 }
 
-/* MAIN CONTENT SECTIONS */
+/* SECTIONS */
 section {
-  padding: 100px 20px; /* Increased padding for better breathing room */
-  max-width: 1100px; /* Wider content area to prevent 'tiny' look on desktop */
+  padding: 80px 20px;
+  max-width: 1100px;
   margin: auto;
 }
 
 h2 {
   color: #1e69de;
-  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-size: 2.5rem;
   margin-bottom: 20px;
-}
-
-p {
-  line-height: 1.6;
-  font-size: 1.15rem;
 }
 
 .help-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
-  margin-top: 30px;
+  gap: 25px;
 }
 
 .help-grid > div {
@@ -143,14 +130,13 @@ footer {
   background-color: #1e69de;
   color: white;
   text-align: center;
-  padding: 40px 20px;
-  margin-top: 50px;
+  padding: 40px;
 }
 
 /* NAVIGATION DOTS */
 .slider-nav {
   display: flex;
-  column-gap: 1.2rem;
+  gap: 1.5rem;
   position: absolute;
   bottom: 40px;
   left: 50%;
@@ -159,13 +145,12 @@ footer {
 }
 
 .slider-nav a {
-  width: 14px;
-  height: 14px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   background-color: white;
-  opacity: 0.4;
+  opacity: 0.5;
   transition: 0.3s;
-  border: 1px solid rgba(0,0,0,0.3);
 }
 
 .slider-nav a:hover {
